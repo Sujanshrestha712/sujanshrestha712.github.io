@@ -43,7 +43,7 @@ export function Contact() {
         </SectionHeading>
 
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal>
+          <Reveal className="min-w-0">
             <ul className="space-y-4">
               {channels.map(({ icon: Icon, label, value, href }) => {
                 const content = (
@@ -76,7 +76,7 @@ export function Contact() {
             </ul>
           </Reveal>
 
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="min-w-0">
             <form onSubmit={onSubmit} noValidate className="glass space-y-5 rounded-2xl p-6 sm:p-8">
               {/* Honeypot: hidden from people and assistive tech, bots fill it in. */}
               <div aria-hidden="true" className="absolute -left-[9999px]">

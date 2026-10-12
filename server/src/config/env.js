@@ -11,6 +11,7 @@ const schema = z.object({
   SMTP_USER: z.string().email(),
   SMTP_PASS: z.string().min(1),
   MAIL_TO: z.string().email(),
+  CONTACT_RATE_LIMIT: z.coerce.number().int().positive().default(5), // messages per IP per hour
 });
 
 const parsed = schema.safeParse(process.env);

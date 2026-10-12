@@ -6,9 +6,10 @@ import { sendContactEmail } from "../services/mailer.js";
 export async function submitContact(req, res) {
   const parsed = contactSchema.safeParse(req.body);
   if (!parsed.success) {
-    const errors = Object.fromEntries(
-      parsed.error.issues.map((i) => [i.path[0] ?? "form", i.message]),
-    );
+    const errors = {};
+    for (const issue of parsed.error.issues) {
+      errors[issue.path[0] ?? "form"] ??= issue.message; // keep the first message per field
+    }
     // Honeypot tripped: pretend success so bots learn nothing.
     if (errors.website) return res.status(201).json({ ok: true });
     return res.status(400).json({ ok: false, errors });

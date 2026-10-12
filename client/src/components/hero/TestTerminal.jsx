@@ -42,7 +42,7 @@ export function TestTerminal() {
       initial={{ opacity: 0, y: 30, rotateX: 8 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="relative"
+      className="relative min-w-0"
       style={{ perspective: 1000 }}
     >
       <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-mint/20 to-violet/20 blur-2xl" />

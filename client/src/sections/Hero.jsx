@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section id="top" className="relative flex min-h-screen items-center pb-16 pt-32">
       <div className="container-page grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-        <div>
+        <div className="min-w-0">
           <motion.p {...fadeUp(0.1)} className="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-panel/60 px-3.5 py-1.5 font-mono text-xs text-muted">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-70" />
