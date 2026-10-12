@@ -12,7 +12,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: CLIENT_ORIGINS
-        value: https://www.shresthasujan712.com.np,https://shresthasujan712.com.np
+        value: https://www.shresthasujan712.com.np,https://shresthasujan712.com.np,https://sujanshrestha712.github.io
       - key: MAIL_TO
         value: shrestha712sujan@gmail.com
       - key: CONTACT_RATE_LIMIT
