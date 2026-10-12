@@ -6,10 +6,8 @@ const schema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   CLIENT_ORIGINS: z.string().default("http://localhost:5173"),
   MONGODB_URI: z.string().optional(),
-  SMTP_HOST: z.string().default("smtp.gmail.com"),
-  SMTP_PORT: z.coerce.number().int().positive().default(465),
-  SMTP_USER: z.string().email(),
-  SMTP_PASS: z.string().min(1),
+  RESEND_API_KEY: z.string().min(1),
+  MAIL_FROM: z.string().min(3).default("Portfolio Contact <onboarding@resend.dev>"),
   MAIL_TO: z.string().email(),
   CONTACT_RATE_LIMIT: z.coerce.number().int().positive().default(5), // messages per IP per hour
 });

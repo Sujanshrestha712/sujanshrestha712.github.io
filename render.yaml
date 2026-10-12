@@ -1,0 +1,24 @@
+# Render Blueprint: deploys the contact API from /server.
+services:
+  - type: web
+    name: sujan-portfolio-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_ORIGINS
+        value: https://www.shresthasujan712.com.np,https://shresthasujan712.com.np
+      - key: MAIL_TO
+        value: shrestha712sujan@gmail.com
+      - key: CONTACT_RATE_LIMIT
+        value: "5"
+      # Secrets: Render asks for these when the blueprint is created.
+      - key: RESEND_API_KEY
+        sync: false
+      - key: MONGODB_URI
+        sync: false

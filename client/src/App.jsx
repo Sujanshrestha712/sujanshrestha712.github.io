@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { warmUpApi } from "@/lib/api";
 import { StarField } from "@/components/effects/StarField";
 import { CursorGlow } from "@/components/effects/CursorGlow";
 import { ScrollProgress } from "@/components/effects/ScrollProgress";
@@ -11,6 +13,8 @@ import { Projects } from "@/sections/Projects";
 import { Contact } from "@/sections/Contact";
 
 export default function App() {
+  useEffect(warmUpApi, []);
+
   return (
     <>
       <StarField />

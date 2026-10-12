@@ -14,7 +14,7 @@ All page content lives in `client/src/data/portfolio.js`.
 ```bash
 # 1. API
 cd server
-cp .env.example .env     # fill SMTP_PASS (Gmail App Password); MONGODB_URI is optional
+cp .env.example .env     # fill RESEND_API_KEY; MONGODB_URI is optional
 npm install
 npm run dev              # http://localhost:5000
 
@@ -24,14 +24,17 @@ npm install
 npm run dev              # http://localhost:5173, /api is proxied to :5000
 ```
 
-### Gmail App Password
-Google Account > Security > enable 2-Step Verification > App passwords > create one,
-and paste it as `SMTP_PASS`. Never commit `.env`.
+### Email (Resend)
+Mail is sent over HTTPS through [Resend](https://resend.com) because free hosts block SMTP.
+Sign up with the inbox that should receive messages, create an API key and paste it as
+`RESEND_API_KEY`. Without a verified domain Resend delivers only to that account's address,
+which is all this form needs. Never commit `.env`.
 
 ## Deploy
 
-- **Client** (GitHub Pages / any static host): set `VITE_API_URL` to the deployed API URL, run `npm run build`, publish `client/dist`. `public/CNAME` keeps the custom domain.
-- **API** (Render, Railway, etc.): root `server/`, start command `npm start`, set the variables from `.env.example`. Set `CLIENT_ORIGINS` to the site's exact origin (for example `https://www.shresthasujan712.com.np`).
+- **API** (Render): `render.yaml` is a Blueprint. Create it from this repo, then enter `RESEND_API_KEY` when asked.
+- **Client** (GitHub Pages): `.github/workflows/deploy.yml` builds and publishes on every push to `main`. Add a repo Actions variable `VITE_API_URL` set to the Render URL, and set Pages source to "GitHub Actions".
+- **Domain**: DNS `www` CNAME to `sujanshrestha712.github.io`, plus the four GitHub Pages `A` records for the apex.
 
 ## Security notes
 
